@@ -1,141 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Snake</title>
-  <link rel="shortcut icon" href="myfavicon.ico" type="image/x-icon"/>
-  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Press+Start+2P|Audiowide" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./snake.css">
-
-  <style>
-    /* ── Seletor de background ─────────────────────────────────── */
-    #bg-selector {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 12px auto 0;
-      flex-wrap: wrap;
-      max-width: 800px;
-    }
-
-    #bg-selector .bg-label {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 8px;
-      color: rgba(255, 255, 255, 0.55);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-right: 4px;
-      white-space: nowrap;
-    }
-
-    .bg-btn {
-      font-family: 'Audiowide', cursive;
-      font-size: 11px;
-      padding: 6px 14px;
-      border-radius: 4px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.05);
-      color: rgba(255, 255, 255, 0.6);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      letter-spacing: 0.5px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .bg-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.45);
-      transform: translateY(-1px);
-    }
-
-    .bg-btn.active {
-      background: rgba(255, 255, 255, 0.18);
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.7);
-    }
-
-    .bg-btn[data-theme="classic"].active  { border-color: #4CAF50; box-shadow: 0 0 10px #4CAF5066; color: #81C784; }
-    .bg-btn[data-theme="neon"].active     { border-color: #ff00ff; box-shadow: 0 0 10px #ff00ff66; color: #00ffff; }
-    .bg-btn[data-theme="forest"].active   { border-color: #52b788; box-shadow: 0 0 10px #52b78866; color: #d8f3dc; }
-    .bg-btn[data-theme="space"].active    { border-color: #a855f7; box-shadow: 0 0 10px #a855f766; color: #e879f9; }
-    .bg-btn[data-theme="desert"].active   { border-color: #e8a84c; box-shadow: 0 0 10px #e8a84c66; color: #fff3d4; }
-    .bg-btn[data-theme="retro"].active    { border-color: #ffff00; box-shadow: 0 0 10px #ffff0066; color: #ffff00; }
-
-    #game-canvas {
-      transition: box-shadow 0.4s ease;
-    }
-  </style>
-
-  <script src="./jquery-2.1.1.js"></script>
-</head>
-<body align="center">
-<div class="big-container">
-  <div id="container">
-    <div id="status-bar"></div>
-    <canvas id="game-canvas" width="780" height="500"></canvas>
-    <menu id="controls"></menu>
-
-    <!--  Seletor de backgrounds -->
-    <div id="bg-selector">
-      <span class="bg-label">Background:</span>
-      <button class="bg-btn active" data-theme="classic">🟩 Clássico</button>
-      <button class="bg-btn" data-theme="neon">🌆 Neon City</button>
-      <button class="bg-btn" data-theme="forest">🌿 Floresta</button>
-      <button class="bg-btn" data-theme="space">🚀 Espaço</button>
-      <button class="bg-btn" data-theme="desert">🏜️ Deserto</button>
-      <button class="bg-btn" data-theme="retro">👾 Retrô</button>
+  <head>
+    <title>Snake</title>
+    <link rel="shortcut icon" href="myfavicon.ico" type="image/x-icon"/>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Press+Start+2P|Audiowide" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./snake.css">
+    <script src="./jquery-2.1.1.js"></script>
+  </head>
+  <body align="center">
+    <div class="big-container">
+      <div id="container">
+        <div id="status-bar"></div>
+        <canvas id="game-canvas" width="780" height="500"></canvas>
+        <menu id="controls"></menu>
+        <br>
+        <info id="info">
+          <instructions class="instructions">
+            <h3>Instructions</h3>
+            <strong>Eat the apples <img src="img/apple.png" height="16" width="16"/></strong><br>
+            <strong>Don't run into the wall or yourself!</strong><br>
+          </instructions>
+          <keys class="keys">
+            <h3>Keys</h3>
+            <strong>Use <code>&#65514;</code> <code>&#65516;</code> <code>&#65515;</code> <code>&#65513;</code>  or <code>w</code> <code>s</code> <code>a</code> <code>d</code> to move</strong><br>
+            <strong><code>esc</code> to go back to the start menu</strong>
+          </keys>
+          <div class="other-game">Want to play another game? Try <a href="https://haleymt.github.io/CrystalQuest" target="_blank">Crystal Quest</a>.</div>
+        </info>
+      </div>
     </div>
-
-    <br>
-    <info id="info">
-      <instructions class="instructions">
-        <h3>Instructions</h3>
-        <strong>Eat the apples <img src="img/apple.png" height="16" width="16"/></strong><br>
-        <strong>Don't run into the wall or yourself!</strong><br>
-      </instructions>
-      <keys class="keys">
-        <h3>Keys</h3>
-        <strong>Use <code>&#65514;</code> <code>&#65516;</code> <code>&#65515;</code> <code>&#65513;</code> or <code>w</code> <code>s</code> <code>a</code> <code>d</code> to move</strong><br>
-        <strong><code>esc</code> to go back to the start menu</strong>
-      </keys>
-      <div class="other-game">Want to play another game? Try <a href="https://haleymt.github.io/CrystalQuest" target="_blank">Crystal Quest</a>.</div>
-    </info>
-  </div>
-</div>
-
-<!--  Carregar backgrounds ANTES do game.js -->
-<script src="lib/backgrounds.js"></script>
-
-<script src="lib/game.js"></script>
-<script src="lib/level.js"></script>
-<script src="lib/grid.js"></script>
-<script src="lib/snake.js"></script>
-<script src="lib/apple.js"></script>
-
-<script>
-  var canvas = document.getElementById("game-canvas");
-  var ctx    = canvas.getContext("2d");
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-  //  Aplica background padrão ao iniciar
-  SnakeGame.Backgrounds.setTheme("classic");
-
-  //  Listeners dos botões
-  document.querySelectorAll(".bg-btn").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      SnakeGame.Backgrounds.setTheme(btn.dataset.theme);
-    });
-  });
-
-  new SnakeGame.Game(
-    780,
-    500,
-    ctx,
-    audioCtx
-  ).run();
-</script>
-</body>
+    <script src="lib/audio.js"></script>
+    <script src="lib/game.js"></script>
+    <script src="lib/level.js"></script>
+    <script src="lib/grid.js"></script>
+    <script src="lib/snake.js"></script>
+    <script src="lib/apple.js"></script>
+    <script>
+      var canvas = document.getElementById("game-canvas");
+      var ctx = canvas.getContext("2d");
+      var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      new SnakeGame.Game(
+        780,
+        500,
+        ctx,
+        audioCtx
+      ).run();
+    </script>
+  </body>
 </html>

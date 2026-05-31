@@ -30,7 +30,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-y: auto;
+    overflow-x: hidden;
 }
 
 /* Scanline overlay */
@@ -62,8 +63,30 @@ body::after {
   z-index: 0;
 }
 
-.big-container {
+.main-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 16px;
+  max-width: 1120px;
   margin: 0 auto;
+}
+
+.game-col {
+  flex-shrink: 0;
+  width: var(--game-width);
+}
+
+.score-col {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  padding-top: 44px; /* alinha com o canvas (altura do status-bar) */
+}
+
+.big-container {
+  margin: 0;
   width: var(--game-width);
   position: relative;
   z-index: 1;
@@ -282,7 +305,8 @@ body::after {
     color 0.15s ease,
     box-shadow 0.15s ease;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #controls button::before {
@@ -632,13 +656,15 @@ code {
    ════════════════════════════════════════ */
 
 #bg-selector {
+    position: relative;
+    z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin: 10px auto 0;
-  max-width: 790px;
+  margin: 10px 0 0;
+  width: 100%;
 }
 
 .bg-label {
@@ -684,31 +710,31 @@ code {
    ════════════════════════════════════════ */
 
 #scoreboard {
-  width: var(--game-width, 790px);
-  margin: 20px auto 0;
+  width: 100%;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  overflow: hidden;
+  overflow-y: auto;
+    overflow-x: hidden;
   background: rgba(8, 12, 8, 0.85);
   font-family: "Space Mono", monospace;
 }
 
 .sb-title {
   font-family: "Press Start 2P", cursive;
-  font-size: 9px;
+  font-size: 8px;
   color: var(--neon-green);
   letter-spacing: 0.12em;
-  padding: 11px 16px;
+  padding: 10px 12px;
   margin: 0;
   background: rgba(57, 255, 20, 0.05);
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .sb-empty {
-  font-size: 12px;
+  font-size: 11px;
   color: rgba(240, 237, 228, 0.35);
   text-align: center;
-  padding: 18px 16px;
+  padding: 16px 12px;
   margin: 0;
   line-height: 1.8;
 }
@@ -716,24 +742,24 @@ code {
 .sb-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .sb-table thead tr { background: rgba(57, 255, 20, 0.04); }
 
 .sb-table th {
-  padding: 7px 14px;
+  padding: 6px 10px;
   color: rgba(57, 255, 20, 0.5);
   font-weight: 400;
-  font-size: 10px;
-  letter-spacing: 0.1em;
+  font-size: 9px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: left;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .sb-table td {
-  padding: 8px 14px;
+  padding: 7px 10px;
   color: var(--off-white);
   border-bottom: 1px solid rgba(57, 255, 20, 0.06);
   vertical-align: middle;
@@ -768,4 +794,3 @@ code {
   color: #ff4545;
   background: rgba(255, 69, 69, 0.07);
 }
-

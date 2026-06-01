@@ -31,7 +31,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 /* Scanline overlay */
@@ -82,7 +82,7 @@ body::after {
   flex: 1;
   min-width: 220px;
   max-width: 300px;
-  padding-top: 44px; /* alinha com o canvas (altura do status-bar) */
+  padding-top: 44px;
 }
 
 .big-container {
@@ -122,16 +122,14 @@ body::after {
 }
 
 #timer {
-  float: right;
   margin-left: auto;
   color: var(--neon-green);
   font-size: 13px;
   letter-spacing: 0.1em;
 }
 
-/* === MAIN CONTAINER === */
+/* === MAIN CONTAINER — FIX: altura automática, sem sobra === */
 #container {
-  height: 550px;
   position: relative;
   width: 100%;
   background: var(--dark-bg);
@@ -139,57 +137,21 @@ body::after {
   border-top: none;
   border-radius: 0 0 4px 4px;
   overflow: visible;
-}
-
-/* Inner corner accents */
-#container::before,
-#container::after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-color: var(--neon-green);
-  border-style: solid;
-  opacity: 0.6;
-  z-index: 2;
-  pointer-events: none;
-}
-#container::before {
-  bottom: 12px;
-  left: 12px;
-  border-width: 0 0 1px 1px;
-}
-#container::after {
-  bottom: 12px;
-  right: 12px;
-  border-width: 0 1px 1px 0;
+  /* sem height fixa — se ajusta ao canvas */
 }
 
 #game-canvas {
   display: block;
   width: 100%;
-  height: 100%;
+  /* sem height: 100% — mantém a altura natural do atributo height="500" */
+  transition:
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
-/* === INFO OVERLAY === */
+/* === INFO OVERLAY — oculto === */
 #info {
-  position: absolute;
-  color: rgba(57, 255, 20, 0.35);
-  text-align: center;
-  width: 100%;
-  left: 0;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-}
-
-.instructions {
-  padding-left: 80px;
-  float: left;
-}
-
-.keys {
-  padding-right: 80px;
-  float: right;
+  display: none;
 }
 
 /* === CONTROLS PANEL === */
@@ -305,8 +267,7 @@ body::after {
     color 0.15s ease,
     box-shadow 0.15s ease;
   position: relative;
-  overflow-y: auto;
-    overflow-x: hidden;
+  overflow: hidden;
 }
 
 #controls button::before {
@@ -337,12 +298,10 @@ body::after {
   transform: scale(0.97);
 }
 
-/* Primary button (start) */
 #controls button#start {
   border-color: var(--neon-green);
 }
 
-/* Secondary / back button */
 #controls button#start-menu {
   border-color: var(--border-mid);
   color: rgba(57, 255, 20, 0.65);
@@ -468,7 +427,7 @@ body::after {
 
 .color-swatch:hover {
   transform: scale(1.2);
-  background: inherit !important; /* keep swatch color on hover */
+  background: inherit !important;
   color: inherit !important;
   box-shadow: none !important;
 }
@@ -610,6 +569,7 @@ code {
   flex-shrink: 0;
   outline: none;
   position: relative;
+  overflow: hidden;
 }
 
 .mute-btn:hover {
@@ -617,7 +577,6 @@ code {
   background: var(--neon-green-dim);
 }
 
-/* Speaker icon via SVG inline — som ligado */
 .mute-btn::before {
   content: "";
   display: block;
@@ -633,7 +592,6 @@ code {
   transition: background-color 0.15s;
 }
 
-/* Speaker icon — som desligado (X sobre o speaker) */
 .mute-btn.muted::before {
   background-color: rgba(57, 255, 20, 0.35);
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'/%3E%3Cline x1='23' y1='9' x2='17' y2='15'/%3E%3Cline x1='17' y1='9' x2='23' y2='15'/%3E%3C/svg%3E");
@@ -644,20 +602,13 @@ code {
   border-color: rgba(57, 255, 20, 0.2);
 }
 
-/* Posiciona o botão no canto direito da status bar */
-#status-bar {
-  display: flex;
-  align-items: center;
-}
-
-
 /* ════════════════════════════════════════
    SELETOR DE BACKGROUNDS
    ════════════════════════════════════════ */
 
 #bg-selector {
-    position: relative;
-    z-index: 20;
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -668,8 +619,8 @@ code {
 }
 
 .bg-label {
-  font-family: "Press Start 2P", cursive;
-  font-size: 7px;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
   color: rgba(57, 255, 20, 0.45);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -677,7 +628,7 @@ code {
 }
 
 .bg-btn {
-  font-family: "Audiowide", cursive;
+  font-family: "Space Mono", monospace;
   font-size: 10px;
   padding: 5px 13px;
   border-radius: 4px;
@@ -700,11 +651,6 @@ code {
   color: #fff;
 }
 
-#game-canvas {
-  transition: box-shadow 0.35s ease, border-color 0.35s ease;
-}
-
-
 /* ════════════════════════════════════════
    SCOREBOARD
    ════════════════════════════════════════ */
@@ -713,14 +659,13 @@ code {
   width: 100%;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
-  overflow-y: auto;
-    overflow-x: hidden;
+  overflow: hidden;
   background: rgba(8, 12, 8, 0.85);
   font-family: "Space Mono", monospace;
 }
 
 .sb-title {
-  font-family: "Press Start 2P", cursive;
+  font-family: "Space Mono", monospace;
   font-size: 8px;
   color: var(--neon-green);
   letter-spacing: 0.12em;
@@ -728,6 +673,7 @@ code {
   margin: 0;
   background: rgba(57, 255, 20, 0.05);
   border-bottom: 1px solid var(--border-subtle);
+  text-transform: uppercase;
 }
 
 .sb-empty {
@@ -743,12 +689,15 @@ code {
   width: 100%;
   border-collapse: collapse;
   font-size: 11px;
+  table-layout: fixed;
 }
 
-.sb-table thead tr { background: rgba(57, 255, 20, 0.04); }
+.sb-table thead tr {
+  background: rgba(57, 255, 20, 0.04);
+}
 
 .sb-table th {
-  padding: 6px 10px;
+  padding: 6px 6px;
   color: rgba(57, 255, 20, 0.5);
   font-weight: 400;
   font-size: 9px;
@@ -756,24 +705,65 @@ code {
   text-transform: uppercase;
   text-align: left;
   border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .sb-table td {
-  padding: 7px 10px;
+  padding: 7px 6px;
   color: var(--off-white);
   border-bottom: 1px solid rgba(57, 255, 20, 0.06);
   vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.sb-table tbody tr:last-child td { border-bottom: none; }
-.sb-table tbody tr:hover td { background: rgba(57, 255, 20, 0.04); }
+.sb-table th:nth-child(1),
+.sb-table td:nth-child(1) {
+  width: 24px;
+}
+.sb-table th:nth-child(2),
+.sb-table td:nth-child(2) {
+  width: 44px;
+}
+.sb-table th:nth-child(3),
+.sb-table td:nth-child(3) {
+  width: 50px;
+}
+.sb-table th:nth-child(4),
+.sb-table td:nth-child(4) {
+  width: 62px;
+}
+.sb-table th:nth-child(5),
+.sb-table td:nth-child(5) {
+  width: auto;
+}
 
-.sb-num    { color: rgba(240, 237, 228, 0.4); width: 32px; }
-.sb-apples { font-weight: 700; color: var(--neon-green); }
-.sb-date   { color: rgba(240, 237, 228, 0.35); font-size: 11px; }
+.sb-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.sb-table tbody tr:hover td {
+  background: rgba(57, 255, 20, 0.04);
+}
 
-.sb-won  .sb-result { color: var(--neon-green); }
-.sb-lost .sb-result { color: #ff4545; }
+.sb-num {
+  color: rgba(240, 237, 228, 0.4);
+}
+.sb-apples {
+  font-weight: 700;
+  color: var(--neon-green);
+}
+.sb-date {
+  color: rgba(240, 237, 228, 0.35);
+  font-size: 10px;
+}
+
+.sb-won .sb-result {
+  color: var(--neon-green);
+}
+.sb-lost .sb-result {
+  color: #ff4545;
+}
 
 .sb-clear {
   display: block;
@@ -787,7 +777,9 @@ code {
   font-size: 11px;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: color 0.15s ease, background 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
 .sb-clear:hover {

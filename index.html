@@ -9,7 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" type="text/css" href="./snake.css" />
-    <script src="./jquery-2.1.1.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   </head>
   <body align="center">
     <!-- Linha principal: jogo à esquerda, scoreboard à direita -->
@@ -68,16 +68,15 @@
     <script src="lib/scores.js"></script>
     <script src="lib/game.js"></script>
     <script src="lib/level.js"></script>
-    <script src="lib/grid.js"></script>
     <script src="lib/snake.js"></script>
     <script src="lib/apple.js"></script>
     <script>
-      var canvas = document.getElementById("game-canvas");
-      var ctx = canvas.getContext("2d");
+      var canvas = document.getElementById('game-canvas');
+      var ctx = canvas.getContext('2d');
       var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-      document.querySelectorAll(".bg-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
+      document.querySelectorAll('.bg-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
           SnakeGame.Backgrounds.setTheme(btn.dataset.theme);
         });
       });

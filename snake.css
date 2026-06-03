@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
 
 :root {
   --neon-green: #39ff14;
@@ -24,7 +24,7 @@
 
 body {
   background: var(--dark-bg);
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   color: var(--off-white);
   min-height: 100vh;
   display: flex;
@@ -36,7 +36,7 @@ body {
 
 /* Scanline overlay */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   background: repeating-linear-gradient(
@@ -52,7 +52,7 @@ body::before {
 
 /* Ambient grid background */
 body::after {
-  content: "";
+  content: '';
   position: fixed;
   inset: 0;
   background-image:
@@ -99,7 +99,7 @@ body::after {
   color: var(--neon-green);
   border-bottom: 1px solid var(--border-subtle);
   font-size: 13px;
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0 16px;
@@ -183,7 +183,7 @@ body::after {
 
 /* Title */
 #controls h1 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -218,7 +218,7 @@ body::after {
 
 /* Result headings */
 #controls h2 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Syne', sans-serif;
   font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -236,7 +236,7 @@ body::after {
 }
 
 #controls h3 {
-  font-family: "Syne", sans-serif;
+  font-family: 'Syne', sans-serif;
   color: var(--acid-yellow);
   font-size: 1rem;
   font-weight: 700;
@@ -247,7 +247,7 @@ body::after {
 
 /* === BUTTONS === */
 #controls button {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -271,7 +271,7 @@ body::after {
 }
 
 #controls button::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: var(--neon-green);
@@ -451,7 +451,7 @@ body::after {
 }
 
 code {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   border: 1px solid var(--border-subtle);
   background: rgba(57, 255, 20, 0.07);
   color: var(--neon-green);
@@ -474,7 +474,7 @@ code {
   color: rgba(57, 255, 20, 0.6);
 }
 
-.timer-settings input[type="number"] {
+.timer-settings input[type='number'] {
   width: 60px;
   margin-left: 6px;
   background: rgba(57, 255, 20, 0.05);
@@ -482,17 +482,17 @@ code {
   border: 1px solid var(--border-subtle);
   border-radius: 2px;
   padding: 3px 6px;
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 12px;
   outline: none;
   transition: border-color 0.15s;
 }
 
-.timer-settings input[type="number"]:focus {
+.timer-settings input[type='number']:focus {
   border-color: var(--neon-green);
 }
 
-.timer-settings input[type="checkbox"] {
+.timer-settings input[type='checkbox'] {
   margin-right: 8px;
   accent-color: var(--neon-green);
 }
@@ -501,13 +501,13 @@ code {
 #controls ul {
   list-style-type: none;
   padding: 0;
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 13px;
   color: rgba(57, 255, 20, 0.7);
 }
 
 #controls p {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 13px;
   color: rgba(57, 255, 20, 0.6);
 }
@@ -523,7 +523,7 @@ code {
 }
 
 .other-game a {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   color: rgba(57, 255, 20, 0.45);
   text-decoration: none;
   transition: color 0.15s;
@@ -578,7 +578,7 @@ code {
 }
 
 .mute-btn::before {
-  content: "";
+  content: '';
   display: block;
   width: 14px;
   height: 14px;
@@ -619,7 +619,7 @@ code {
 }
 
 .bg-label {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 9px;
   color: rgba(57, 255, 20, 0.45);
   letter-spacing: 0.1em;
@@ -628,7 +628,7 @@ code {
 }
 
 .bg-btn {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 10px;
   padding: 5px 13px;
   border-radius: 4px;
@@ -661,11 +661,11 @@ code {
   border-radius: 6px;
   overflow: hidden;
   background: rgba(8, 12, 8, 0.85);
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
 }
 
 .sb-title {
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 8px;
   color: var(--neon-green);
   letter-spacing: 0.12em;
@@ -773,7 +773,7 @@ code {
   border: none;
   border-top: 1px solid var(--border-subtle);
   color: rgba(240, 237, 228, 0.28);
-  font-family: "Space Mono", monospace;
+  font-family: 'Space Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -785,4 +785,40 @@ code {
 .sb-clear:hover {
   color: #ff4545;
   background: rgba(255, 69, 69, 0.07);
+}
+
+#fruit-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 6px 0 0;
+  width: 100%;
+}
+
+.fruit-btn {
+  font-family: 'Audiowide', cursive;
+  font-size: 10px;
+  padding: 5px 13px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.fruit-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.fruit-btn.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
 }

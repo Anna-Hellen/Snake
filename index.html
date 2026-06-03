@@ -55,6 +55,17 @@
           <button class="bg-btn" data-theme="desert">Deserto</button>
           <button class="bg-btn" data-theme="retro">Retro</button>
         </div>
+
+        <!-- Seletor de frutas -->
+        <div id="fruit-selector">
+          <span class="bg-label">Fruta:</span>
+          <button class="fruit-btn active" data-fruit="apple">Maçã</button>
+          <button class="fruit-btn" data-fruit="orange">Laranja</button>
+          <button class="fruit-btn" data-fruit="watermelon">Melancia</button>
+          <button class="fruit-btn" data-fruit="strawberry">Morango</button>
+          <button class="fruit-btn" data-fruit="grape">Uva</button>
+          <button class="fruit-btn" data-fruit="lemon">Limao</button>
+        </div>
       </div>
 
       <!-- Coluna direita: scoreboard -->
@@ -78,6 +89,12 @@
       document.querySelectorAll('.bg-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           SnakeGame.Backgrounds.setTheme(btn.dataset.theme);
+        });
+      });
+
+      document.querySelectorAll('.fruit-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          SnakeGame.Fruits.setCurrent(btn.dataset.fruit);
         });
       });
 
